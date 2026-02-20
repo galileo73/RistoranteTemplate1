@@ -1,0 +1,171 @@
+{
+  "brand_identity": {
+    "name": "Ristorantino da Matteo",
+    "location": "Prague 7 (Letná)",
+    "persona": "Matteo - Authentic, Warm, Passionate, Elegant but Unpretentious",
+    "values": ["Authenticity", "Warmth", "Quality", "Family", "Tradition"],
+    "target_audience": ["Locals (Letná)", "Tourists", "Premium Diners"],
+    "tone": "Warm, Elegant, Minimalist, Welcoming"
+  },
+  "design_system": {
+    "theme": "light",
+    "colors": {
+      "palette": {
+        "primary": "#2F3A2F",
+        "secondary": "#F5EFE6",
+        "accent": "#6A1E2E",
+        "text": "#1C1C1C",
+        "white": "#FFFFFF",
+        "muted": "#E5DACE"
+      },
+      "usage": {
+        "background": "bg-[#F5EFE6]",
+        "text_main": "text-[#1C1C1C]",
+        "text_muted": "text-[#2F3A2F]/80",
+        "heading": "text-[#2F3A2F]",
+        "button_primary": "bg-[#6A1E2E] text-white hover:bg-[#501622]",
+        "button_secondary": "bg-transparent border border-[#2F3A2F] text-[#2F3A2F] hover:bg-[#2F3A2F] hover:text-white",
+        "border": "border-[#2F3A2F]/20"
+      }
+    },
+    "typography": {
+      "font_family": {
+        "heading": "Playfair Display, serif",
+        "body": "Lato, sans-serif"
+      },
+      "rules": {
+        "headings": "font-serif font-bold tracking-tight text-[#2F3A2F]",
+        "subheadings": "font-sans uppercase tracking-widest text-xs font-semibold text-[#6A1E2E]",
+        "body": "font-sans text-[#1C1C1C] leading-relaxed",
+        "nav": "font-sans text-sm font-medium tracking-wide uppercase"
+      }
+    },
+    "spacing": {
+      "container": "container mx-auto px-4 md:px-6 lg:px-8",
+      "section_padding": "py-16 md:py-24 lg:py-32",
+      "element_gap": "gap-6 md:gap-8 lg:gap-12"
+    },
+    "border_radius": "rounded-sm",
+    "shadows": "shadow-lg shadow-[#2F3A2F]/5"
+  },
+  "assets": {
+    "images": {
+      "hero": {
+        "url": "https://images.pexels.com/photos/35133248/pexels-photo-35133248.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Warm authentic Italian dining atmosphere"
+      },
+      "food_featured": [
+        {
+          "url": "https://images.pexels.com/photos/16195015/pexels-photo-16195015.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "alt": "Fresh pasta and white wine"
+        },
+        {
+          "url": "https://images.pexels.com/photos/29039070/pexels-photo-29039070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          "alt": "Margherita pizza"
+        }
+      ],
+      "chef": {
+        "url": "https://images.pexels.com/photos/35760002/pexels-photo-35760002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Chef preparing dough"
+      },
+      "interior": {
+        "url": "https://images.pexels.com/photos/3570071/pexels-photo-3570071.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "alt": "Rustic Italian interior with brick oven"
+      },
+      "location": {
+        "url": "https://images.unsplash.com/photo-1757004955131-3d8a4ff32b68?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxwcmFndWUlMjBsZXRuYSUyMHBhcmslMjBzY2VuaWMlMjB2aWV3fGVufDB8fHx8MTc3MTU4NDQzNXww&ixlib=rb-4.1.0&q=85",
+        "alt": "View of Prague from Letná"
+      }
+    },
+    "icons": {
+      "library": "lucide-react",
+      "preferred": ["Utensils", "MapPin", "Clock", "Phone", "Instagram", "Facebook", "Star", "ChevronDown", "Menu", "X"]
+    }
+  },
+  "components": {
+    "marketing": {
+      "hero": {
+        "type": "custom",
+        "description": "Full-screen cinematic background image with overlay. Centered elegant typography. Two buttons: 'Reserve Table' (Primary) and 'View Menu' (Secondary).",
+        "style": "h-screen min-h-[600px] flex items-center justify-center relative overflow-hidden"
+      },
+      "story": {
+        "type": "custom",
+        "description": "Asymmetric grid (Text left, Image right or vice versa). Focus on Matteo's passion. Use 'The Tetris Grid' logic.",
+        "style": "bg-[#F5EFE6] text-[#1C1C1C]"
+      },
+      "featured_dishes": {
+        "type": "custom",
+        "description": "Horizontal scroll or simple grid of 3 top dishes. High-quality images with hover reveal of name/price.",
+        "style": "snap-x snap-mandatory flex gap-4 overflow-x-auto pb-4"
+      },
+      "gallery": {
+        "type": "custom",
+        "description": "Masonry layout of food and interior shots. Minimal gaps.",
+        "style": "columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4"
+      }
+    },
+    "functional": {
+      "reservation_form": {
+        "type": "shadcn",
+        "components": ["Form", "Input", "Select", "Calendar", "Button", "Popover"],
+        "fields": ["name", "phone", "email", "date", "time", "guests", "notes"],
+        "style": "bg-white/50 backdrop-blur-sm p-8 rounded-sm border border-[#2F3A2F]/10"
+      },
+      "menu": {
+        "type": "custom",
+        "description": "Clean text-based list with price. Categories: Antipasti, Primi, Secondi, Dolci, Vini. PDF Download button sticky or prominent.",
+        "style": "max-w-2xl mx-auto space-y-12"
+      },
+      "navbar": {
+        "type": "custom",
+        "description": "Transparent on Hero, solid background on scroll. Logo left, Links center, 'Reserve' button right. Mobile: Hamburger menu.",
+        "style": "fixed top-0 w-full z-50 transition-all duration-300"
+      },
+      "footer": {
+        "type": "custom",
+        "description": "Dark background (#2F3A2F). Light text. 3 Columns: Contact/Address, Hours, Socials/Links.",
+        "style": "bg-[#2F3A2F] text-[#F5EFE6] py-12"
+      }
+    }
+  },
+  "layout_strategies": {
+    "grid_system": "grid grid-cols-1 md:grid-cols-12 gap-6",
+    "mobile": "Stack everything. Ensure buttons are 44px+ height. Sticky 'Reserve' button at bottom on mobile view.",
+    "alignment": "Center-align marketing headings. Left-align body text for readability. Optical alignment for icons."
+  },
+  "motion": {
+    "library": "framer-motion",
+    "scrolling": "lenis",
+    "effects": {
+      "fade_up": "initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: 'easeOut' }}",
+      "stagger": "staggerChildren: 0.1",
+      "hover": "whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}"
+    },
+    "transitions": "Smooth page transitions. No jagged cuts."
+  },
+  "functionality": {
+    "reservation_logic": "Client-side validation. Success message modal. No email automation (mocked).",
+    "language_switcher": "State-based (Context API). Options: CZ, EN, IT. Default: CZ.",
+    "responsiveness": "Mobile-first approach. Ensure touch targets are accessible."
+  },
+  "instructions_to_main_agent": [
+    "Use 'Lato' for body and 'Playfair Display' for headings. Import them via Google Fonts in index.html or CSS.",
+    "Implement smooth scrolling using 'lenis'.",
+    "Use Shadcn UI components for complex interactions (Dialog, Form, Calendar, Popover). Customize them to match the Olive/Cream theme.",
+    "Do NOT use gradients. Use solid warm colors and subtle textures if needed.",
+    "Ensure the 'Reserve' button is always visible on mobile (sticky bottom).",
+    "Create a 'PDF Download' button for the menu.",
+    "Mock the backend API calls for reservation.",
+    "Use the provided image URLs for placeholders. Do not leave empty boxes.",
+    "Ensure high contrast for text (APCA standards).",
+    "Add 'data-testid' to all interactive elements."
+  ],
+  "universal_guidelines": [
+    "Avoid generic 'AI slop' aesthetics. No purple/teal gradients.",
+    "Use 2-3x more spacing than typical. Breathing room is luxury.",
+    "Micro-animations are mandatory for every interaction.",
+    "Responsive design is non-negotiable. Test mobile view first.",
+    "Code must be clean, modular, and well-documented."
+  ]
+}
