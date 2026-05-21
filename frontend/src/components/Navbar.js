@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { restaurant } from '../config/restaurant';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -64,7 +65,7 @@ export const Navbar = () => {
                 isScrolled || !isHomePage ? 'text-[#2F3A2F]' : 'text-white'
               }`}
             >
-              Ristorantino da Matteo
+              {restaurant.name}
             </Link>
 
             {/* Desktop Navigation */}

@@ -2,20 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { restaurant } from '../config/restaurant';
+import { Hours } from './sections';
 
 export const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
-
-  const hours = [
-    { day: t('hours.monday'), time: t('hours.closed') },
-    { day: t('hours.tuesday'), time: '12:00 - 22:00' },
-    { day: t('hours.wednesday'), time: '12:00 - 22:00' },
-    { day: t('hours.thursday'), time: '12:00 - 22:00' },
-    { day: t('hours.friday'), time: '12:00 - 23:00' },
-    { day: t('hours.saturday'), time: '12:00 - 23:00' },
-    { day: t('hours.sunday'), time: '12:00 - 21:00' },
-  ];
 
   return (
     <footer data-testid="footer" className="bg-[#2F3A2F] text-[#F5EFE6]">
@@ -24,30 +16,34 @@ export const Footer = () => {
           {/* Brand & Tagline */}
           <div className="lg:col-span-1">
             <Link to="/" className="font-serif text-2xl font-bold text-[#F5EFE6]">
-              Ristorantino da Matteo
+              {restaurant.name}
             </Link>
             <p className="mt-4 text-[#F5EFE6]/80 text-sm leading-relaxed">
               {t('footer.tagline')}
             </p>
             <div className="flex gap-4 mt-6">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="social-instagram"
-                className="text-[#F5EFE6]/60 hover:text-[#F5EFE6] transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="social-facebook"
-                className="text-[#F5EFE6]/60 hover:text-[#F5EFE6] transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
+              {restaurant.social.instagram && (
+                <a
+                  href={restaurant.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="social-instagram"
+                  className="text-[#F5EFE6]/60 hover:text-[#F5EFE6] transition-colors"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
+              {restaurant.social.facebook && (
+                <a
+                  href={restaurant.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="social-facebook"
+                  className="text-[#F5EFE6]/60 hover:text-[#F5EFE6] transition-colors"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+              )}
             </div>
           </div>
 
@@ -60,24 +56,25 @@ export const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 text-[#F5EFE6]/60 flex-shrink-0" />
                 <span className="text-sm text-[#F5EFE6]/80">
-                  Milady Horákové 42<br />Praha 7 - Letná
+                  {restaurant.address.street}<br />
+                  {restaurant.address.district}
                 </span>
               </div>
               <a
-                href="tel:+420123456789"
+                href={`tel:${restaurant.contact.phone}`}
                 data-testid="footer-phone"
                 className="flex items-center gap-3 text-sm text-[#F5EFE6]/80 hover:text-[#F5EFE6] transition-colors"
               >
                 <Phone className="w-4 h-4 text-[#F5EFE6]/60" />
-                +420 123 456 789
+                {restaurant.contact.phone}
               </a>
               <a
-                href="mailto:info@ristorantinodamatteo.cz"
+                href={`mailto:${restaurant.contact.email}`}
                 data-testid="footer-email"
                 className="flex items-center gap-3 text-sm text-[#F5EFE6]/80 hover:text-[#F5EFE6] transition-colors"
               >
                 <Mail className="w-4 h-4 text-[#F5EFE6]/60" />
-                info@ristorantinodamatteo.cz
+                {restaurant.contact.email}
               </a>
             </div>
           </div>
@@ -87,16 +84,7 @@ export const Footer = () => {
             <h4 className="font-serif text-lg font-semibold mb-4 text-[#F5EFE6]">
               {t('hours.title')}
             </h4>
-            <div className="space-y-2">
-              {hours.map((item, index) => (
-                <div key={index} className="flex justify-between text-sm">
-                  <span className="text-[#F5EFE6]/60">{item.day}</span>
-                  <span className={`text-[#F5EFE6]/80 ${item.time === t('hours.closed') ? 'text-[#6A1E2E]' : ''}`}>
-                    {item.time}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <Hours showIcon={false} className="text-[#F5EFE6]" />
           </div>
 
           {/* Quick Links */}
@@ -136,7 +124,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-[#F5EFE6]/10 text-center">
           <p className="text-sm text-[#F5EFE6]/60">
-            © {currentYear} Ristorantino da Matteo. {t('footer.rights')}.
+            © {currentYear} {restaurant.name}. {t('footer.rights')}.
           </p>
         </div>
       </div>

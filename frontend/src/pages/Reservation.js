@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import { CalendarIcon, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { restaurant } from '../config/restaurant';
+import { SEO } from '../components/SEO';
 import { Calendar } from '../components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
@@ -28,7 +30,7 @@ export const Reservation = () => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error'
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [datePickerOpen, setDatePickerOpen] = useState(false);
 
   const timeSlots = [
@@ -38,6 +40,14 @@ export const Reservation = () => {
 
   const guestOptions = Array.from({ length: 10 }, (_, i) => i + 1);
 
+  // Get closed days from config
+  const closedDays = Object.entries(restaurant.hours)
+    .filter(([_, hours]) => hours.closed)
+    .map(([day, _]) => {
+      const dayIndex = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].indexOf(day);
+      return dayIndex;
+    });
+
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = t('reservation.required');
@@ -45,11 +55,11 @@ export const Reservation = () => {
     if (!formData.date) newErrors.date = t('reservation.required');
     if (!formData.time) newErrors.time = t('reservation.required');
     if (!formData.guests) newErrors.guests = t('reservation.required');
-    
+
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Invalid email format';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -74,7 +84,6 @@ export const Reservation = () => {
 
       await axios.post(`${API}/reservations`, payload);
       setSubmitStatus('success');
-      // Reset form
       setFormData({
         name: '',
         phone: '',
@@ -101,6 +110,11 @@ export const Reservation = () => {
 
   return (
     <div data-testid="reservation-page" className="min-h-screen bg-[#F5EFE6]">
+      <SEO
+        title={t('reservation.title')}
+        description={t('reservation.subtitle')}
+      />
+
       {/* Header */}
       <section className="pt-24 md:pt-32 pb-8 md:pb-12">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -193,7 +207,7 @@ export const Reservation = () => {
                     data-testid="reservation-phone"
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
-                    placeholder="+420 XXX XXX XXX"
+                    placeholder={restaurant.contact.phone}
                     className={`border-[#2F3A2F]/20 focus:border-[#6A1E2E] focus:ring-[#6A1E2E] ${errors.phone ? 'border-red-500' : ''}`}
                   />
                   {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
@@ -242,7 +256,12 @@ export const Reservation = () => {
                           handleInputChange('date', date);
                           setDatePickerOpen(false);
                         }}
-                        disabled={(date) => date < new Date() || date.getDay() === 1}
+                        disabled={(date) => {
+                          const today = new Date();
+                          today.setHours(0, 0, 0, 0);
+                          // Disable past dates and closed days (Monday = 1)
+                          return date < today || date.getDay() === 1;
+                        }}
                         initialFocus
                       />
                     </PopoverContent>
@@ -336,10 +355,10 @@ export const Reservation = () => {
                 Per gruppi di più di 10 persone, contattaci direttamente:
               </p>
               <a
-                href="tel:+420123456789"
+                href={`tel:${restaurant.contact.phone}`}
                 className="text-[#6A1E2E] font-medium hover:underline"
               >
-                +420 123 456 789
+                {restaurant.contact.phone}
               </a>
             </div>
           </motion.div>

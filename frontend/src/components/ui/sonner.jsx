@@ -1,14 +1,19 @@
-import { useTheme } from "next-themes"
 import { Toaster as Sonner, toast } from "sonner"
 
 const Toaster = ({
   ...props
 }) => {
-  const { theme = "system" } = useTheme()
+  // Detect system theme preference (works without next-themes in CRA)
+  const getSystemTheme = () => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
+    }
+    return 'light'
+  }
 
   return (
     <Sonner
-      theme={theme}
+      theme={getSystemTheme()}
       className="toaster group"
       toastOptions={{
         classNames: {

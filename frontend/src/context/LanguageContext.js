@@ -81,11 +81,14 @@ const translations = {
       philosophy: 'Naše filosofie',
       philosophyText: 'Věříme, že nejlepší jídlo vzniká z nejlepších ingrediencí. Proto každý den pečlivě vybíráme čerstvé suroviny a připravujeme vše s láskou a respektem k italské tradici.',
       whyPrague: 'Proč Praha?',
-      whyPragueText: 'Praha nás okouzlila svou krásou a pohostinností. Letná je dokonalým místem pro náš malý kousek Itálie.'
+      whyPragueText: 'Praha nás okouzlila svou krásou a pohostinností. Letná je dokonalým místem pro náš malý kousek Itálie.',
+      ourSpace: 'Náš prostor'
     },
     gallery: {
       title: 'Galerie',
-      subtitle: 'Atmosféra a speciality'
+      subtitle: 'Atmosféra a speciality',
+      instagram: 'Sledujte nás na Instagramu',
+      instagramButton: 'Přejít na profil'
     },
     contact: {
       title: 'Kontakt',
@@ -94,6 +97,8 @@ const translations = {
       phone: 'Telefon',
       email: 'E-mail',
       whatsapp: 'WhatsApp',
+      whatsappButton: 'Napsat na WhatsApp',
+      clickToCall: 'Klikněte pro volání',
       parking: 'Parkování v okolí k dispozici'
     },
     footer: {
@@ -185,11 +190,14 @@ const translations = {
       philosophy: 'Our Philosophy',
       philosophyText: 'We believe the best food comes from the best ingredients. That is why we carefully select fresh produce every day and prepare everything with love and respect for Italian tradition.',
       whyPrague: 'Why Prague?',
-      whyPragueText: 'Prague charmed us with its beauty and hospitality. Letná is the perfect place for our little piece of Italy.'
+      whyPragueText: 'Prague charmed us with its beauty and hospitality. Letná is the perfect place for our little piece of Italy.',
+      ourSpace: 'Our Space'
     },
     gallery: {
       title: 'Gallery',
-      subtitle: 'Atmosphere and specialties'
+      subtitle: 'Atmosphere and specialties',
+      instagram: 'Follow us on Instagram',
+      instagramButton: 'Visit Profile'
     },
     contact: {
       title: 'Contact',
@@ -198,6 +206,8 @@ const translations = {
       phone: 'Phone',
       email: 'Email',
       whatsapp: 'WhatsApp',
+      whatsappButton: 'Message on WhatsApp',
+      clickToCall: 'Click to call',
       parking: 'Parking available nearby'
     },
     footer: {
@@ -289,11 +299,14 @@ const translations = {
       philosophy: 'La Nostra Filosofia',
       philosophyText: 'Crediamo che il cibo migliore nasca dai migliori ingredienti. Per questo ogni giorno selezioniamo con cura prodotti freschi e prepariamo tutto con amore e rispetto per la tradizione italiana.',
       whyPrague: 'Perché Praga?',
-      whyPragueText: 'Praga ci ha incantato con la sua bellezza e ospitalità. Letná è il luogo perfetto per il nostro piccolo angolo d\'Italia.'
+      whyPragueText: 'Praga ci ha incantato con la sua bellezza e ospitalità. Letná è il luogo perfetto per il nostro piccolo angolo d\'Italia.',
+      ourSpace: 'Il Nostro Spazio'
     },
     gallery: {
       title: 'Galleria',
-      subtitle: 'Atmosfera e specialità'
+      subtitle: 'Atmosfera e specialità',
+      instagram: 'Seguici su Instagram',
+      instagramButton: 'Vai al profilo'
     },
     contact: {
       title: 'Contatti',
@@ -302,6 +315,8 @@ const translations = {
       phone: 'Telefono',
       email: 'Email',
       whatsapp: 'WhatsApp',
+      whatsappButton: 'Messaggio via WhatsApp',
+      clickToCall: 'Clicca per chiamare',
       parking: 'Parcheggio disponibile nelle vicinanze'
     },
     footer: {

@@ -1,12 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { restaurant } from '../config/restaurant';
+import { SEO } from '../components/SEO';
+import { CTA } from '../components/sections';
 
 export const About = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div data-testid="about-page" className="min-h-screen bg-[#F5EFE6]">
+      <SEO
+        title={t('about.title')}
+        description={t('about.subtitle')}
+      />
+
       {/* Header */}
       <section className="pt-24 md:pt-32 pb-12 md:pb-16">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -25,7 +33,7 @@ export const About = () => {
         </div>
       </section>
 
-      {/* Matteo's Story */}
+      {/* Chef's Story */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -37,8 +45,8 @@ export const About = () => {
             >
               <div className="relative">
                 <img
-                  src="https://images.pexels.com/photos/35760002/pexels-photo-35760002.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Chef Matteo"
+                  src={restaurant.story.chefImage}
+                  alt="Chef"
                   className="w-full h-[400px] md:h-[500px] object-cover rounded-sm shadow-xl"
                 />
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#6A1E2E] rounded-sm hidden md:block" />
@@ -93,7 +101,7 @@ export const About = () => {
               className="order-1 lg:order-2"
             >
               <img
-                src="https://images.pexels.com/photos/16195015/pexels-photo-16195015.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={restaurant.story.foodImage}
                 alt="Fresh ingredients"
                 className="w-full h-[350px] md:h-[400px] object-cover rounded-sm shadow-xl"
               />
@@ -113,8 +121,8 @@ export const About = () => {
               transition={{ duration: 0.6 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1757004955131-3d8a4ff32b68?crop=entropy&cs=srgb&fm=jpg&w=800"
-                alt="Prague view"
+                src={restaurant.story.locationImage}
+                alt="Location"
                 className="w-full h-[350px] md:h-[400px] object-cover rounded-sm shadow-xl"
               />
             </motion.div>
@@ -145,7 +153,7 @@ export const About = () => {
             className="text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#2F3A2F]">
-              Il Nostro Spazio
+              {t('about.ourSpace')}
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -157,7 +165,7 @@ export const About = () => {
               className="md:col-span-2"
             >
               <img
-                src="https://images.pexels.com/photos/3570071/pexels-photo-3570071.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={restaurant.story.interiorImage}
                 alt="Restaurant interior"
                 className="w-full h-64 md:h-80 object-cover rounded-sm"
               />
@@ -169,7 +177,7 @@ export const About = () => {
               transition={{ delay: 0.2 }}
             >
               <img
-                src="https://images.pexels.com/photos/29039070/pexels-photo-29039070.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src={restaurant.gallery[1]?.src}
                 alt="Food detail"
                 className="w-full h-64 md:h-80 object-cover rounded-sm"
               />
@@ -179,20 +187,7 @@ export const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#2F3A2F]">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#F5EFE6] mb-4">
-            {t('cta.title')}
-          </h2>
-          <a
-            href="/reservation"
-            data-testid="about-reserve-btn"
-            className="inline-block bg-[#6A1E2E] text-white px-8 py-4 rounded-sm font-medium uppercase tracking-wide transition-all hover:bg-[#501622]"
-          >
-            {t('nav.reserve')}
-          </a>
-        </div>
-      </section>
+      <CTA />
     </div>
   );
 };
