@@ -57,7 +57,10 @@
   },
   "scripts": {
     "start": "craco start",
+    "prebuild": "node scripts/build-config.js",
     "build": "craco build",
+    "postbuild": "node scripts/restore-placeholders.js",
+    "build:demo": "SITE_URL=https://demo.netlify.app npm run build",
     "test": "craco test"
   },
   "browserslist": {

@@ -10,6 +10,8 @@ from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
+from config.menu import MENU_DATA, RESTAURANT_INFO
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
@@ -126,63 +128,15 @@ async def create_contact(input: ContactCreate):
 
 # Menu endpoint (static data)
 @api_router.get("/menu")
-async def get_menu():
+async def get_menu_endpoint():
     """Get the restaurant menu"""
-    return {
-        "antipasti": [
-            {"name": "Bruschetta Classica", "description": "Pomodori freschi, basilico, aglio", "price": 180},
-            {"name": "Carpaccio di Manzo", "description": "Rucola, parmigiano, capperi", "price": 320},
-            {"name": "Burrata Pugliese", "description": "Pomodorini, basilico, olio EVO", "price": 280},
-            {"name": "Vitello Tonnato", "description": "Vitello, salsa tonnata, capperi", "price": 290}
-        ],
-        "primi": [
-            {"name": "Spaghetti alle Vongole", "description": "Vongole veraci, aglio, prezzemolo", "price": 380},
-            {"name": "Risotto ai Porcini", "description": "Funghi porcini, parmigiano", "price": 360},
-            {"name": "Tagliatelle al Ragù", "description": "Ragù bolognese tradizionale", "price": 320},
-            {"name": "Gnocchi alla Sorrentina", "description": "Pomodoro, mozzarella, basilico", "price": 290}
-        ],
-        "secondi": [
-            {"name": "Branzino al Forno", "description": "Patate, olive, pomodorini", "price": 520},
-            {"name": "Tagliata di Manzo", "description": "Rucola, pomodorini, parmigiano", "price": 580},
-            {"name": "Ossobuco alla Milanese", "description": "Gremolata, risotto giallo", "price": 490},
-            {"name": "Saltimbocca alla Romana", "description": "Prosciutto, salvia, vino bianco", "price": 420}
-        ],
-        "dolci": [
-            {"name": "Tiramisù", "description": "Mascarpone, caffè, cacao", "price": 180},
-            {"name": "Panna Cotta", "description": "Frutti di bosco", "price": 160},
-            {"name": "Cannoli Siciliani", "description": "Ricotta, pistacchio", "price": 170},
-            {"name": "Affogato", "description": "Gelato, espresso", "price": 140}
-        ],
-        "vini": [
-            {"name": "Chianti Classico DOCG", "description": "Toscana, rosso", "price": 890, "bottle": True},
-            {"name": "Prosecco DOC", "description": "Veneto, spumante", "price": 690, "bottle": True},
-            {"name": "Pinot Grigio IGT", "description": "Alto Adige, bianco", "price": 150, "glass": True},
-            {"name": "Montepulciano d'Abruzzo", "description": "Abruzzo, rosso", "price": 140, "glass": True}
-        ]
-    }
+    return MENU_DATA
 
 # Restaurant info endpoint
 @api_router.get("/info")
-async def get_restaurant_info():
+async def get_info_endpoint():
     """Get restaurant information"""
-    return {
-        "name": "Ristorantino da Matteo",
-        "address": "Milady Horákové 42, Praha 7 - Letná",
-        "phone": "+420 123 456 789",
-        "email": "info@ristorantinodamatteo.cz",
-        "rating": 4.7,
-        "reviews": 303,
-        "hours": {
-            "monday": "Chiuso",
-            "tuesday": "12:00 - 22:00",
-            "wednesday": "12:00 - 22:00",
-            "thursday": "12:00 - 22:00",
-            "friday": "12:00 - 23:00",
-            "saturday": "12:00 - 23:00",
-            "sunday": "12:00 - 21:00"
-        },
-        "coordinates": {"lat": 50.1005, "lng": 14.4280}
-    }
+    return RESTAURANT_INFO
 
 # Include the router in the main app
 app.include_router(api_router)

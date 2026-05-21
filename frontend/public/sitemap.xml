@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  NOTE: This is a template file. Replace %SITE_URL% with your actual domain before deployment.
-  Example: Replace %SITE_URL% with https://yourrestaurant.com
-
-  You can also generate this dynamically using a build script that reads from config.
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>%SITE_URL%/</loc>

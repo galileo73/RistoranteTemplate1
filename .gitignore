@@ -83,3 +83,16 @@ frontend/node_modules/.cache/default-development/2.pack
 # Environment files
 *.env
 *.env.*
+
+# Local development tools
+.remember/
+.playwright-mcp/
+
+# Screenshot files (large)
+homepage-*.png
+
+# Root package-lock (use frontend's)
+/package-lock.json
+
+#Documentations
+/docs
